@@ -1,0 +1,3 @@
+[submodule "map-navigation"]
+	path = map-navigation
+	url = https://github.com/BrayanSGL/air-traffic-manager.git
