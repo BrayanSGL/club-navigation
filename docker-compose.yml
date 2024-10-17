@@ -4,15 +4,24 @@ services:
   frontend:
     container_name: frontend-club-navigation
     ports:
-      - "3000:80" # Asegurando que expongas el puerto correcto
+      - "3000:80"
     build:
-      context: ./map-navigation # Ruta de tu Dockerfile
+      context: ./map-navigation
+    depends_on:
+      - backend
+    networks:
+      - club-network
 
   backend:
     container_name: backend-club-navigation
     ports:
-      - "5000:5000" # Asegurando que expongas el puerto correcto
+      - "5000:5000"
     build:
-      context: ./server # Ruta de tu Dockerfile
-
+      context: ./server
     restart: always
+    networks:
+      - club-network
+
+networks:
+  club-network:
+    driver: bridge
