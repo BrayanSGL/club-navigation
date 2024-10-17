@@ -2,25 +2,8 @@ version: '3.8'
 
 services:
   frontend:
-    image: node:20-alpine
     container_name: frontend-club-navigation
-    working_dir: /app
     ports:
       - "3000:3000" # Asegurando que expongas el puerto correcto
-    volumes:
-      - .:/app
     build:
-      context: .
-      dockerfile: Dockerfile
-    command: >
-      sh -c "
-      apk add --no-cache git &&
-      if [ ! -d air-traffic-manager ]; then
-        git clone https://github.com/BrayanSGL/air-traffic-manager.git;
-      fi &&
-      cd air-traffic-manager &&
-      npm install &&
-      npm run build &&
-      npm install -g serve &&
-      serve -s build -l 3000"
-    restart: always
+      context: ./map-navigation # Ruta de tu Dockerfile
