@@ -18,7 +18,7 @@ RUN npm run build
 #correr la aplicación
 FROM nginx:stable-alpine
 
-COPY --from=build /app/air-traffic-manager/build /usr/share/nginx/html
+COPY --from=build /app/air-traffic-manager/dist /usr/share/nginx/html
 
 EXPOSE 80
 
