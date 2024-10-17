@@ -4,6 +4,6 @@ services:
   frontend:
     container_name: frontend-club-navigation
     ports:
-      - "3000:3000" # Asegurando que expongas el puerto correcto
+      - "3000:80" # Asegurando que expongas el puerto correcto
     build:
       context: ./map-navigation # Ruta de tu Dockerfile
