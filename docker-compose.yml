@@ -7,3 +7,12 @@ services:
       - "3000:80" # Asegurando que expongas el puerto correcto
     build:
       context: ./map-navigation # Ruta de tu Dockerfile
+
+  backend:
+    container_name: backend-club-navigation
+    ports:
+      - "5000:5000" # Asegurando que expongas el puerto correcto
+    build:
+      context: ./server # Ruta de tu Dockerfile
+
+    restart: always
