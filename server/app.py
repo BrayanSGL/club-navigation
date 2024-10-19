@@ -63,5 +63,15 @@ def add_user():
     return jsonify({'error': str(e)}), 500
     
   
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    return jsonify([{
+        'id': user.id,
+        'username': user.username,
+        'email': user.email
+    } for user in users])
+
+  
 if __name__ == '__main__':
   app.run(host="0.0.0.0" , port=5000) 
