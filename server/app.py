@@ -1,4 +1,5 @@
 import os
+from flask_cors import CORS
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
@@ -7,6 +8,9 @@ from .models.User import  User, db
 from . import create_app, db
 
 app = create_app()
+
+# Enable CORS globally for the app
+CORS(app)
 
 
 # Cargar las variables de entorno desde el archivo .env
@@ -61,7 +65,30 @@ def add_user():
 
   except Exception as e:
     return jsonify({'error': str(e)}), 500
-    
+
+@app.route('/login', methods=['POST'])
+def login():
+  data = request.json  # Obtener los datos JSON del request
+
+  # Extraer el nombre de usuario y correo electrónico del JSON
+  email = data.get('email')
+  password = data.get('password')
+
+  # Validar que los campos no estén vacíos
+  if  not email or not password:
+    return jsonify({'error': 'Faltan campos obligatorios'}), 400
+
+  try:
+    # Crear un nuevo usuario con los datos proporcionados
+    user = User.query.filter_by(email=email, password=password).first()
+
+    if user:
+      return jsonify({'message': 'Usuario logueado correctamente'}), 200
+    else:
+      return jsonify({'error': 'Usuario o contraseña incorrectos'}), 401
+
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
   
 @app.route('/users', methods=['GET'])
 def get_users():
