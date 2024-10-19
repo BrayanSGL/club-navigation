@@ -3,8 +3,7 @@ from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from config import Config
-from models import db, User
-
+from models import  User
 
 # Cargar las variables de entorno desde el archivo .env
 load_dotenv()
@@ -19,12 +18,9 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 # Inicializar la base de datos
-db.init_app(app)
+User.db.init_app(app)
 
-# Crear la tabla en la base de datos (solo la primera vez)
-@app.before_first_request
-def create_tables():
-    db.create_all()
+
 
 @app.route('/clock')
 def clock():
@@ -53,10 +49,10 @@ def add_user():
     new_user = User(username=username, email=email, password=password)
 
     # Agregar el nuevo usuario a la sesión de la base de datos
-    db.session.add(new_user)
+    User.db.session.add(new_user)
 
     # Confirmar la transacción en la base de datos
-    db.session.commit()
+    User.db.session.commit()
 
     return jsonify({'message': 'Usuario agregado correctamente'}), 201
 
