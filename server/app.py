@@ -17,9 +17,10 @@ DB_NAME = os.getenv('DB_NAME')
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Inicializar la base de datos
-User.db.init_app(app)
-
+@app.cli.command("init_db")
+def init_db():
+  User.db.init_app(app)
+  User.db.create_all()
 
 
 @app.route('/clock')
