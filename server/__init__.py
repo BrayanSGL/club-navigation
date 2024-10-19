@@ -12,9 +12,6 @@ def create_app():
     # Inicializa la base de datos con la aplicación
     db.init_app(app)
 
-    # Registrar las rutas
-    from . import routes
-
     with app.app_context():
         # Crea las tablas en la base de datos si no existen
         db.create_all()
