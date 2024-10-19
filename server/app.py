@@ -4,6 +4,10 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from .config import Config
 from .models.User import  User, db
+from . import create_app, db
+
+app = create_app()
+
 
 # Cargar las variables de entorno desde el archivo .env
 load_dotenv()
@@ -14,8 +18,6 @@ DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_NAME = os.getenv('DB_NAME')
 
-app = Flask(__name__)
-app.config.from_object(Config)
 
 @app.cli.command("init_db")
 def init_db():
