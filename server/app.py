@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from .config import Config
 from .models.User import  User, db
 from . import create_app, db
+import jwt
 
 app = create_app()
 
@@ -83,7 +84,8 @@ def login():
     user = User.query.filter_by(email=email, password=password).first()
 
     if user:
-      return jsonify({'message': 'Usuario logueado correctamente'}), 200
+      token = jwt.encode({'user_id': user.id, 'exp': datetime.utcnow() + timedelta(hours=1)}, "secret", algorithm="HS256")
+      return jsonify({'token': token}), 200
     else:
       return jsonify({'error': 'Usuario o contraseña incorrectos'}), 401
 
