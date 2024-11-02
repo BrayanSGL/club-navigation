@@ -11,7 +11,6 @@ def seed_data():
       destination=FLIGHTS[index + 1]['code'] if index + 1 < len(FLIGHTS) else FLIGHTS[0]['code'],
       duration=flight['flightTime'],
       departure=flight['departure'], 
-      arrival=flight['arrival'], 
       arrival=(datetime.strptime(flight['departure'], '%H:%M') + timedelta(minutes=flight['flightTime'])).strftime('%H:%M'),
       waiting_time=flight['waiting_time'])
     for index, flight in enumerate(FLIGHTS)

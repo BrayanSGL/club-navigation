@@ -7,3 +7,4 @@ flights_bp = Blueprint('flights', __name__, url_prefix='/flights')
 def get_flights():
   flights = Flights.query.all()
   return jsonify(flights)
+
