@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from ..models.UserFlight import UserFlight
 from ..flight.functions import generate_schedule
 
@@ -11,6 +11,9 @@ def get_flights():
 
 @flights_bp.route('/<int:id>/register', methods=['POST'])
 def register_flight(id):
-  user_flight = UserFlight(user_id=id, flight_id=id)
+  data = request.json
+  user_id = data.get('user_id')
+  
+  user_flight = UserFlight(user_id=user_id, flight_id=id)
   user_flight.save()
   return jsonify({'message': 'Vuelo registrado correctamente'}), 201

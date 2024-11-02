@@ -10,7 +10,7 @@ def generate_schedule():
     flight = FLIGHTS[i]
     next_flight = FLIGHTS[i + 1]
     schedule.append(Flight(
-      id=i,
+      id=i + 1,
       origin=flight["code"],
       destination=next_flight["code"],
       departure=flight["departure"],
