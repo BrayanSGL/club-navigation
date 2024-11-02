@@ -19,5 +19,6 @@ def register_flight(id):
     return jsonify({'error': 'Faltan campos obligatorios'}), 400
   
   user_flight = UserFlight(user_id=user_id, flight_id=id)
-  db = db.session.add(user_flight)
+  db.session.add(user_flight)
+  db.session.commit()
   return jsonify({'message': 'Vuelo registrado correctamente'}), 201
