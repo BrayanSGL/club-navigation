@@ -7,7 +7,7 @@ def seed_data():
   default_flights = [
     Flights(
       origin=flight['code'], 
-      destination=FLIGHTS[index + 1]['code'], 
+      destination=FLIGHTS[index + 1]['code'] if index + 1 < len(FLIGHTS) else FLIGHTS[0]['code'],
       duration=flight['duration'], 
       departure=flight['departure'], 
       arrival=flight['arrival'], 
