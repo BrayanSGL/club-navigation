@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 from .routes import register_routes
+from .models.seed import seed_data
 
 # Inicializa SQLAlchemy
 db = SQLAlchemy()
@@ -19,5 +20,7 @@ def create_app():
     with app.app_context():
         # Crea las tablas en la base de datos si no existen
         db.create_all()
+        seed_data()
+        
 
     return app
