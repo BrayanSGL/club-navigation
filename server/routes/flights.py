@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from ..models.UserFlight import UserFlight
+from .. import db
 from ..flight.functions import generate_schedule
 
 flights_bp = Blueprint('flights', __name__, url_prefix='/flights')
@@ -14,6 +15,9 @@ def register_flight(id):
   data = request.json
   user_id = data.get('user_id')
   
+  if not user_id:
+    return jsonify({'error': 'Faltan campos obligatorios'}), 400
+  
   user_flight = UserFlight(user_id=user_id, flight_id=id)
-  user_flight.save()
+  db = db.session.add(user_flight)
   return jsonify({'message': 'Vuelo registrado correctamente'}), 201
