@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv  
 from .models.User import  User
 from . import create_app
+from .utils.clock import clock as clock_util
 import jwt
 
 app = create_app()
@@ -30,12 +31,7 @@ DB_NAME = os.getenv('DB_NAME')
 
 @app.route('/clock')
 def clock():
-  now = datetime.now()
-  start_of_day = datetime(now.year, now.month, now.day)
-  milliseconds_since_start_of_day = (now - start_of_day).total_seconds() * 1000
-  new_time = milliseconds_since_start_of_day * 48
-  new_date = start_of_day + timedelta(milliseconds=new_time)
-  return new_date.strftime('%Y-%m-%d %H:%M:%S')
+  return clock_util()
 
 # @app.route('/add_user', methods=['POST'])
 # def add_user():
