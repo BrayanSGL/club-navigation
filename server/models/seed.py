@@ -12,7 +12,7 @@ def seed_data():
       departure=flight['departure'], 
       arrival=flight['arrival'], 
       waiting_time=flight['waiting_time'])
-    for flight, index in FLIGHTS
+    for index, flight in enumerate(FLIGHTS)
   ]
 
   # Agregar los productos si no existen
