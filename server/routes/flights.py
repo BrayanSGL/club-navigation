@@ -8,3 +8,4 @@ def get_flights():
   flights = Flights.query.all()
   return jsonify(flights)
 
+# @flights_bp.route('/in

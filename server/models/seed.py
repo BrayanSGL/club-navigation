@@ -12,7 +12,7 @@ def seed_data():
       duration=flight['flightTime'],
       departure=flight['departure'], 
       arrival=(datetime.strptime(flight['departure'], '%H:%M') + timedelta(minutes=flight['flightTime'])).strftime('%H:%M'),
-      waiting_time=flight['waiting_time'])
+      waiting_time=flight['waitTime'])
     for index, flight in enumerate(FLIGHTS)
   ]
 
