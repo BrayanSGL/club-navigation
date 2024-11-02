@@ -1,4 +1,4 @@
-class Fligth():
+class Flight():
   def __init__(self, id, origin, destination, departure, arrival, duration, waiting_time):
     self.id = id
     self.origin = origin
