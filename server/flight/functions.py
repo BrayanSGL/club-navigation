@@ -19,4 +19,4 @@ def generate_schedule():
       waiting_time=flight["waitTime"]
     ))
     
-  return schedule
+  return [flight.to_json() for flight in schedule]
