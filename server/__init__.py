@@ -16,9 +16,6 @@ def create_app():
         # Crea las tablas en la base de datos si no existen
         db.create_all()
         
-        from .models.seed import seed_data
-        seed_data()
-
         # Registra las rutas en la aplicación
         from .routes import register_routes
         register_routes(app)

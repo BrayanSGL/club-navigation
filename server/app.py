@@ -27,7 +27,6 @@ DB_NAME = os.getenv('DB_NAME')
 # def init_db():
 #   db.init_app(app)
 #   db.create_all()
-#   seed_data()
 
 @app.route('/clock')
 def clock():
