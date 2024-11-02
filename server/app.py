@@ -2,10 +2,9 @@ import os
 from flask_cors import CORS
 from flask import request, jsonify
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
+from dotenv import load_dotenv  
 from .models.User import  User
 from . import create_app, db 
-from .models.seed import seed_data
 import jwt
 
 app = create_app()
