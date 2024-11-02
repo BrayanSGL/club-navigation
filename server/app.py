@@ -102,10 +102,6 @@ def get_users():
         'email': user.email
     } for user in users])
     
-@app.route('/flights', methods=['GET'])
-def get_flights():
-  return jsonify(FLIGHTS)
-
 @app.route('/flights/buy', methods=['POST'])
 def buy_flight():
     data = request.json
