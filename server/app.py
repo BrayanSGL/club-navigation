@@ -30,16 +30,6 @@ DB_NAME = os.getenv('DB_NAME')
 @app.route('/clock')
 def clock():
   return clock_util()
-
-
-@app.route('/users', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    return jsonify([{
-        'id': user.id,
-        'username': user.username,
-        'email': user.email
-    } for user in users])
     
 # @app.route('/flights/buy', methods=['POST'])
 # def buy_flight():
