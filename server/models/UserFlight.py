@@ -1,4 +1,4 @@
-from .. import db
+from ..database import db
 
 class UserFlight(db.Model):
   __tablename__ = 'users_flights'

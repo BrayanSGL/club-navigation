@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from ..models.UserFlight import UserFlight
-from .. import db
+from ..database import db
 from ..flight.functions import generate_schedule
 
 flights_bp = Blueprint('flights', __name__, url_prefix='/flights')
