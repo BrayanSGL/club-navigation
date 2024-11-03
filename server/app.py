@@ -1,12 +1,10 @@
 import os
 from flask_cors import CORS
-from flask import request, jsonify
-from datetime import datetime, timedelta
+from flask import jsonify
 from dotenv import load_dotenv  
 from .models.User import  User
 from . import create_app
 from .utils.clock import clock as clock_util
-import jwt
 
 app = create_app()
 
@@ -61,31 +59,7 @@ def clock():
 #   except Exception as e:
 #     return jsonify({'error': str(e)}), 500
 
-@app.route('/login', methods=['POST'])
-def login():
-  data = request.json  # Obtener los datos JSON del request
 
-  # Extraer el nombre de usuario y correo electrónico del JSON
-  email = data.get('email')
-  password = data.get('password')
-
-  # Validar que los campos no estén vacíos
-  if  not email or not password:
-    return jsonify({'error': 'Faltan campos obligatorios'}), 400
-
-  try:
-    # Crear un nuevo usuario con los datos proporcionados
-    user = User.query.filter_by(email=email, password=password).first()
-
-    if user:
-      token = jwt.encode({'user_id': user.id, 'exp': datetime.utcnow() + timedelta(hours=1)}, "secret", algorithm="HS256")
-      return jsonify({'token': token}), 200
-    else:
-      return jsonify({'error': 'Usuario o contraseña incorrectos'}), 401
-
-  except Exception as e:
-    return jsonify({'error': str(e)}), 500
-  
 @app.route('/users', methods=['GET'])
 def get_users():
     users = User.query.all()
