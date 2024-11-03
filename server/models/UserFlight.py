@@ -6,7 +6,6 @@ class UserFlight(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   flight_id = db.Column(db.Integer, db.ForeignKey('flights.id'), nullable=False)
   
-  user = db.relationship('User', back_populates='flights')
   flight = db.relationship('Flight', back_populates='users')
 
   def __repr__(self):
