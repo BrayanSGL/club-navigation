@@ -5,6 +5,7 @@ class Flight(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   origin = db.Column(db.String(3), nullable=False)
   destination = db.Column(db.String(3), nullable=False)
+  date = db.Column(db.Date, nullable=False)
   departure = db.Column(db.String(5), nullable=False)
   arrival = db.Column(db.String(5), nullable=False)
   duration = db.Column(db.String(5), nullable=False)
@@ -21,5 +22,6 @@ class Flight(db.Model):
       'departure': self.departure,
       'arrival': self.arrival,
       'duration': self.duration,
-      'waiting_time': self.waiting_time
+      'waiting_time': self.waiting_time,
+      'date': self.date
     }
