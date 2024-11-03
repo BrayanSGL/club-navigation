@@ -31,34 +31,6 @@ DB_NAME = os.getenv('DB_NAME')
 def clock():
   return clock_util()
 
-# @app.route('/add_user', methods=['POST'])
-# def add_user():
-#   data = request.json  # Obtener los datos JSON del request
-
-#   # Extraer el nombre de usuario y correo electrónico del JSON
-#   username = data.get('username')
-#   email = data.get('email')
-#   password = data.get('password')
-
-#   # Validar que los campos no estén vacíos
-#   if not username or not email or not password:
-#     return jsonify({'error': 'Faltan campos obligatorios'}), 400
-
-#   try:
-#     # Crear un nuevo usuario con los datos proporcionados
-#     new_user = User(username=username, email=email, password=password)
-
-#     # Agregar el nuevo usuario a la sesión de la base de datos
-#     db.session.add(new_user)
-
-#     # Confirmar la transacción en la base de datos
-#     db.session.commit()
-
-#     return jsonify({'message': 'Usuario agregado correctamente'}), 201
-
-#   except Exception as e:
-#     return jsonify({'error': str(e)}), 500
-
 
 @app.route('/users', methods=['GET'])
 def get_users():
