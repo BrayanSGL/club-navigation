@@ -15,6 +15,7 @@ def create_app():
     with app.app_context():
         # Crea las tablas en la base de datos si no existen
         db.create_all()
+        print('Base de datos inicializada')
         
         # Registra las rutas en la aplicación
         from .routes import register_routes
