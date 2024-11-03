@@ -1,10 +1,9 @@
-FLIGHTS = [
+DESTINATIONS = [
   {
     "id": 1,
     "name": "Aeropuerto Internacional El Dorado",
     "code": "BOG",
     "coordinates": [4.7, -74.15],
-    "departure": "08:00",
     "flightTime": 90,
     "waitTime": 30, 
   },
@@ -13,7 +12,6 @@ FLIGHTS = [
     "name": "Aeropuerto Internacional Alfonso Bonilla Aragón",
     "code": "CLO",
     "coordinates": [3.45, -76.53],
-    "departure": "10:30",
     "flightTime": 75,
     "waitTime": 20,
   },
@@ -22,7 +20,6 @@ FLIGHTS = [
     "name": "Aeropuerto Internacional José María Córdova",
     "code": "MDE",
     "coordinates": [6.22, -75.59],
-    "departure": "12:25",
     "flightTime": 105, 
     "waitTime": 25, 
   },
@@ -31,7 +28,6 @@ FLIGHTS = [
     "name": "Aeropuerto Internacional Rafael Núñez",
     "code": "CTG",
     "coordinates": [10.44, -75.51],
-    "departure": "14:00",
     "flightTime": 90, 
     "waitTime": 15, 
   },
@@ -40,7 +36,6 @@ FLIGHTS = [
     "name": "Aeropuerto Internacional Palonegro",
     "code": "BGA",
     "coordinates": [7.13, -73.18],
-    "departure": "17:00",
     "flightTime": 120, 
     "waitTime": 30, 
   },
@@ -49,7 +44,6 @@ FLIGHTS = [
     "name": "Aeropuerto Alfredo Vásquez Cobo",
     "code": "LET",
     "coordinates": [-4.19, -69.94],
-    "departure": "20:00",
     "flightTime": 150, 
     "waitTime": 15,
   },
@@ -58,8 +52,7 @@ FLIGHTS = [
     "name": "Aeropuerto Internacional El Dorado",
     "code": "BOG",
     "coordinates": [4.7, -74.15],
-    "departure": "00:00",
     "flightTime": 150,
-    "waitTime": 0,
+    "waitTime": 5,
   }
 ]

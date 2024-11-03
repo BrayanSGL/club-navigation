@@ -1,13 +1,19 @@
 from flask import Blueprint, jsonify, request
+from datetime import datetime
 from ..models.UserFlight import UserFlight
 from ..database import db
 from ..flight.functions import generate_schedule
+from ..models.Flights import Flight
 
 flights_bp = Blueprint('flights', __name__, url_prefix='/flights')
 
 @flights_bp.route('/', methods=['GET'])
 def get_flights():
-  flights = generate_schedule()
+  # traer los vuelos que estan en el futuro desde hoy
+  today = datetime.now().date()
+  flights = Flight.query.filter(Flight.date >= today).all()
+  
+  # flights = generate_schedule()
   return jsonify(flights)
 
 @flights_bp.route('/<int:id>/register', methods=['POST'])
