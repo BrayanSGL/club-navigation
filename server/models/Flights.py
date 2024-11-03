@@ -13,3 +13,13 @@ class Flight(db.Model):
   def __repr__(self):
     return f"<Flight {self.origin} to {self.destination}>"
   
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'origin': self.origin,
+      'destination': self.destination,
+      'departure': self.departure,
+      'arrival': self.arrival,
+      'duration': self.duration,
+      'waiting_time': self.waiting_time
+    }
