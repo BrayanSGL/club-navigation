@@ -7,7 +7,7 @@ class User(db.Model):
   email = db.Column(db.String(100), nullable=False)
   password = db.Column(db.String(100), nullable=False)
   
-  flights = db.relationship('UserFlight', backref='user', lazy=True)
+  flights = db.relationship('UserFlight', back_populates='user')
 
   def __repr__(self):
     return f"<User {self.username}>"
