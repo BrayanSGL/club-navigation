@@ -14,6 +14,9 @@ def create_app():
 
     with app.app_context():
         # Crea las tablas en la base de datos si no existen
+        from .models.UserFlight import UserFlight
+        from .models.User import User
+        
         db.create_all()
         print('Base de datos inicializada')
         
