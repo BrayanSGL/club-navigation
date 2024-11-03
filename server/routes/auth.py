@@ -21,7 +21,7 @@ def login():
 
     if user:
       token = jwt.encode({'user_id': user.id, 'exp': datetime.utcnow() + timedelta(hours=1)}, "secret", algorithm="HS256")
-      return jsonify({'token': token}), 200
+      return jsonify({'token': token, 'user': { 'user_id': user.id }}), 200
     else:
       return jsonify({'error': 'Usuario o contraseña incorrectos'}), 401
 
