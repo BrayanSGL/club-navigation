@@ -11,6 +11,8 @@ class Flight(db.Model):
   duration = db.Column(db.String(5), nullable=False)
   waiting_time = db.Column(db.String(5), nullable=False)
   
+  users = db.relationship('UserFlight', back_populates='flight')
+  
   def __repr__(self):
     return f"<Flight {self.origin} to {self.destination}>"
   
