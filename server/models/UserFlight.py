@@ -7,4 +7,11 @@ class UserFlight(db.Model):
   flight_id = db.Column(db.Integer, nullable=False)
 
   def __repr__(self):
-      return f"<UserFlight {self.id}>"
+    return f"<UserFlight {self.id}>"
+  
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'user_id': self.user_id,
+      'flight_id': self.flight_id
+    }
