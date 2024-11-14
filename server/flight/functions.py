@@ -29,4 +29,6 @@ def generate_schedule():
       duration=flight["totalTime"],
     ))
     
+    date_departure = date_departure + timedelta(minutes=flight["totalTime"])
+    
   return [flight.to_json() for flight in schedule]
