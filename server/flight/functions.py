@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from ..utils.clock import clock
 
 def generate_schedule():
+  print("generate_schedule")
   schedule = []
   time = clock()
   print(time, "time")

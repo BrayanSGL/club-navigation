@@ -12,7 +12,7 @@ def get_flights():
   # traer los vuelos que estan en el futuro desde hoy
   # today = datetime.now().date()
   # flights = Flight.query.filter(Flight.date >= today).all()
-  
+  print("get_flights - ruta")
   flights = generate_schedule()
   return jsonify(flights)
 
