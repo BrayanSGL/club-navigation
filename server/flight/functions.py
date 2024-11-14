@@ -16,7 +16,6 @@ def generate_schedule():
       departure=flight["departure"],
       arrival=next_flight["departure"],
       duration=flight["flightTime"],
-      waiting_time=flight["waitTime"],
     ))
     
   return [flight.to_json() for flight in schedule]

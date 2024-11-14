@@ -10,10 +10,10 @@ flights_bp = Blueprint('flights', __name__, url_prefix='/flights')
 @flights_bp.route('/', methods=['GET'])
 def get_flights():
   # traer los vuelos que estan en el futuro desde hoy
-  today = datetime.now().date()
-  flights = Flight.query.filter(Flight.date >= today).all()
+  # today = datetime.now().date()
+  # flights = Flight.query.filter(Flight.date >= today).all()
   
-  # flights = generate_schedule()
+  flights = generate_schedule()
   return jsonify(flights)
 
 @flights_bp.route('/<int:id>/register', methods=['POST'])
