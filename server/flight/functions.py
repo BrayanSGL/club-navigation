@@ -6,7 +6,9 @@ from ..utils.clock import clock
 
 def generate_schedule():
   schedule = []
-  initial_date = datetime.strptime(clock(), "%Y-%m-%d %H:%M:%S")
+  time = clock()
+  print(time, "time")
+  initial_date = datetime.strptime(time, "%Y-%m-%d %H:%M:%S")
   date_departure = initial_date
   
   for i in range(len(DESTINATIONS)):
