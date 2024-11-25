@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 def clock():
-    now = datetime.now()  # Asegúrate de que estás usando la zona horaria local
+    now = datetime.utcnow()  # Usar UTC explícitamente
     start_of_day = datetime(now.year, now.month, now.day)
     milliseconds_since_start_of_day = (now - start_of_day).total_seconds() * 1000
     new_time = milliseconds_since_start_of_day * 48
