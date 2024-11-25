@@ -4,10 +4,9 @@ from .model import Flight
 from datetime import datetime, timedelta
 from ..utils.clock import clock
 
-def generate_schedule():
+def generate_schedule(time_now=clock()):
   print("generate_schedule")
   schedule = []
-  time_now = clock()
   print(time_now, "time")
   initial_date = datetime.strptime(time_now, "%Y-%m-%d %H:%M:%S")
   date_departure = initial_date
